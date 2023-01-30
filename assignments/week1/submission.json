@@ -2,13 +2,13 @@
     "assignment_name": "Assignment 1",
     "contributors": [
         {
-            "name": "Tamjid Imtiaz",
-            "pennkey": "tamjid"
+            "name": "Jordan Matelsky",
+            "pennkey": "matelsky"
         }
     ],
     "sources": [
-        "https://www.geeksforgeeks.org/linear-regression-python-implementation/",
-        "Conversations with TA (Hainiu Xu)",
-        "https://towardsdatascience.com/linear-regression-and-gradient-descent-using-only-numpy-53104a834f75"
+        "https://example.com",
+        "Conversations with TA (include TA's name)",
+        "LLM (include information about the LLM and how it was used)"
     ]
 }
