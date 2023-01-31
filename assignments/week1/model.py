@@ -21,6 +21,7 @@ class LinearRegression:
             y (np.ndarray): The output.
         Returns:
             np.ndarray: weight and bias terms.
+
         """      
         # define a new matrix comprising of a column of ones and append it with the original 'X'
         X_new = np.append(np.ones((X.shape[0],1)), X, 1)
@@ -35,10 +36,13 @@ class LinearRegression:
     def predict(self, X: np.ndarray) -> np.ndarray:   
         """
         Predict the output for the given input.
+
         Arguments:
             X (np.ndarray): The input data.
+
         Returns:
             np.ndarray: The predicted output.
+
         """
         return X @ self.w.T + self.b
 
@@ -56,34 +60,35 @@ class GradientDescentLinearRegression(LinearRegression):
         Arguments:
             X (np.ndarray): The input data.
             y (np.ndarray): The output.
+            lr (float): learning rate
+            epochs (int): number of epochs.
         Returns:
             np.ndarray: weight and bias terms.
+
         """   
-        self.lr = lr
-        self.epochs = epochs
-
-        y_new = np.reshape(y, (len(y), 1))   
+        # define a new matrix comprising of a column of ones and append it with the original 'X'
         X = np.append(np.ones((X.shape[0],1)), X, 1)
-        N = X.shape[0]
-        w = np.zeros((X.shape[1],1))
-        for i in range(0,epochs):
-            gradients = -(2/N) * X.T @ (y_new - X @ w)
-            w = w - self.lr * np.clip(gradients, -1, 1)
-
-       
-        self.w = w[1:]
-        self.b = w[0]
-        # print(self.w.shape)
-        
+        # initialize the weight matrix
+        w = np.zeros(X.shape[1])
+        for i in range(epochs):
+            y_hat = X @ w.T
+            df_dm =  (-2/X.shape[0]) * (X.T @ (y - y_hat))
+            w = w - df_dm * lr
+            self.b = np.array(w[0])
+            self.w = np.array(w[1:])
+            
         return self.w, self.b
         
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """
         Predict the output for the given input.
+
         Arguments:
             X (np.ndarray): The input data.
+
         Returns:
             np.ndarray: The predicted output.
+
         """
-        return X @ self.w + self.b
+        return X @ self.w.T + self.b
