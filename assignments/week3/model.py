@@ -3,6 +3,9 @@ import torch
 
 
 class MLP(torch.nn.Module):
+    """
+    build a multilayer perceptron model to fit the training data
+    """
     def __init__(
         self,
         input_size: int,
@@ -47,7 +50,7 @@ class MLP(torch.nn.Module):
         # # Create final layer
         # self.out = torch.nn.Linear(input_size, num_classes)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> None:
         """
         Forward pass of the network.
 
