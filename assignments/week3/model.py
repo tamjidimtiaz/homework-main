@@ -3,18 +3,14 @@ import torch
 
 
 class MLP(torch.nn.Module):
-    """
-    A multi-layer perceptron network to fit the training data.
-    """
-
     def __init__(
         self,
         input_size: int,
         hidden_size: int,
         num_classes: int,
-        hidden_count: int = 1,
-        activation: Callable = torch.nn.ReLU,
-        initializer: Callable = torch.nn.init.xavier_uniform_,
+        hidden_count: int = 2,
+        activation: Callable = torch.nn.Sigmoid,
+        initializer: Callable = torch.nn.init.ones_,
     ) -> None:
         """
         Initialize the MLP.
@@ -31,12 +27,27 @@ class MLP(torch.nn.Module):
         self.layers = torch.nn.ModuleList()
         self.activation = activation()
 
-        self.fc1 = torch.nn.Linear(input_size, hidden_size)
-        initializer(self.fc1.weight)
-        self.fc2 = torch.nn.Linear(hidden_size, num_classes)
-        initializer(self.fc2.weight)
+        for i in range(hidden_count):
+            next_num_inputs = hidden_size[i]
+            self.layers += [torch.nn.Linear(input_size, next_num_inputs)]
+            initializer(self.layers[i].weight)
+            input_size = next_num_inputs
 
-    def forward(self, x: torch.Tensor) -> None:
+        # Create final layer
+        self.out = torch.nn.Linear(input_size, num_classes)
+
+        # super().__init__()
+        # self.activation = activation()
+        # self.layers = torch.nn.ModuleList()
+        # for i in range(len(hidden_size)):
+        #   next_num_inputs = hidden_size[i]
+        #   self.layers += [torch.nn.Linear(input_size, next_num_inputs)]
+        #   input_size = next_num_inputs
+
+        # # Create final layer
+        # self.out = torch.nn.Linear(input_size, num_classes)
+
+    def forward(self, x):
         """
         Forward pass of the network.
 
@@ -50,8 +61,10 @@ class MLP(torch.nn.Module):
         x = x.view(x.shape[0], -1)
 
         # Get activations of each layer
-        x = self.activation(self.fc1(x))
-        x = self.activation(self.fc2(x))
-        x = torch.nn.functional.log_softmax(x, dim=1)
+        for layer in self.layers:
+            x = self.activation(layer(x))
 
-        return x
+        # Get outputs
+        x = self.out(x)
+
+        return torch.nn.functional.log_softmax(x, dim=1)
