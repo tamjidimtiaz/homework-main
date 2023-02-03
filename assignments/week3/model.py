@@ -36,7 +36,6 @@ class MLP(torch.nn.Module):
         self.fc2 = torch.nn.Linear(hidden_size, num_classes)
         initializer(self.fc2.weight)
 
-
     def forward(self, x: torch.Tensor) -> None:
         """
         Forward pass of the network.
