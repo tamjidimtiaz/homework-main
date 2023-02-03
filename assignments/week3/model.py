@@ -14,7 +14,7 @@ class MLP(torch.nn.Module):
         num_classes: int,
         hidden_count: int = 1,
         activation: Callable = torch.nn.ReLU,
-        initializer: Callable = torch.nn.init.kaiming_normal_,
+        initializer: Callable = torch.nn.init.xavier_uniform_,
     ) -> None:
         """
         Initialize the MLP.
