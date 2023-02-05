@@ -32,10 +32,11 @@ class MLP(torch.nn.Module):
         self.activation = activation()
 
         for i in range(hidden_count):
-            next_num_inputs = hidden_size
+            next_num_inputs = hidden_size // 2
             self.layers += [torch.nn.Linear(input_size, next_num_inputs)]
             initializer(self.layers[i].weight)
             input_size = next_num_inputs
+            hidden_size = next_num_inputs
 
         # Create final layer
         self.out = torch.nn.Linear(input_size, num_classes)
