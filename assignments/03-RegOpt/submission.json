@@ -1,12 +1,14 @@
 {
-    "assignment_name": "RegOpt",
+    "assignment_name": "MLP",
     "contributors": [
         {
-            "name": "Change this to your name",
-            "pennkey": "MyPennKey"
+            "name": "Tamjid Imtiaz",
+            "pennkey": "tamjid"
         }
     ],
     "sources": [
-        "Don't forget to list your sources/attribution here!"
+        "https://pytorch.org/docs/stable/nn.init.html",
+        "Conversations with TA: Hainiu Xu",
+        "https://www.geeksforgeeks.org/activation-functions-in-pytorch/"
     ]
 }
