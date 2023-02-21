@@ -1,14 +1,9 @@
 {
-    "assignment_name": "MLP",
-    "contributors": [
-        {
-            "name": "Tamjid Imtiaz",
-            "pennkey": "tamjid"
-        }
-    ],
+    "assignment_name": "RegOpt",
+    "contributors": [{"name": "Tamjid Imtiaz", "pennkey": "tamjid"}],
     "sources": [
-        "https://pytorch.org/docs/stable/nn.init.html",
-        "Conversations with TA: Hainiu Xu",
-        "https://www.geeksforgeeks.org/activation-functions-in-pytorch/"
-    ]
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://pytorch.org/docs/stable/_modules/torch/optim/lr_scheduler.html#ExponentialLR",
+        "TA : Hainiu Xu"
+    ],
 }
