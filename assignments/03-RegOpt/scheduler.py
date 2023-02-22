@@ -3,7 +3,6 @@ import math
 from torch.optim.lr_scheduler import _LRScheduler
 
 
-
 class CustomLRScheduler(_LRScheduler):
     """
     Here is my custom learning rate scheduler
