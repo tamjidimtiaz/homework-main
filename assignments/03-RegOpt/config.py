@@ -26,10 +26,10 @@ class CONFIG:
         [nn.Module], torch.optim.Optimizer
     ] = lambda model: torch.optim.Adam(
         model.parameters(),
-        lr=initial_learning_rate,
+        lr=0.01,
         betas=(0.9, 0.999),
         eps=0.1,
-        weight_decay=initial_weight_decay,
+        weight_decay=1e-4,
     )
 
     transforms = Compose(
