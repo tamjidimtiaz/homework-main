@@ -2,7 +2,7 @@
     "assignment_name": "Convolutions",
     "contributors": [{"name": "Tamjid Imtiaz", "pennkey": "tamjid"}],
     "sources": [
-        "https://datahacker.rs/017-pytorch-how-to-apply-batch-normalization-in-pytorch/",
+        "https://pytorch.org/tutorials/beginner/introyt/modelsyt_tutorial.html",
         "Conversation with TA: Hainiu Xu"
     ]
 }
