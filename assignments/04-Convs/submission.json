@@ -1,12 +1,8 @@
 {
     "assignment_name": "Convolutions",
-    "contributors": [
-        {
-            "name": "Change this to your name",
-            "pennkey": "MyPennKey"
-        }
-    ],
+    "contributors": [{"name": "Tamjid Imtiaz", "pennkey": "tamjid"}],
     "sources": [
-        "Don't forget to list your sources/attribution here!"
+        "https://datahacker.rs/017-pytorch-how-to-apply-batch-normalization-in-pytorch/"
+        "Conversation with TA: Hainiu Xu"
     ]
 }
